@@ -1,5 +1,7 @@
+import defaultMarkdownText from "./default-mardown-text";
+
 const initialState = {
-    markdownText: '#title',
+    markdownText: defaultMarkdownText,
 };
   
 const reducer = (state = initialState, action) => {
