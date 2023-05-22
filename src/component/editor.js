@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setMarkdownText, togglePreviewVisibility } from '../action';
 
-//import './editor.css'
-
 const Editor = () => {
   
   const markdownText = useSelector((state) => state.markdownText);
