@@ -4,5 +4,11 @@ const setMarkdownText = (markdownText) => {
       payload: markdownText,
     };
   };
+
+const togglePreviewVisibility = () => {
+  return {
+    type: 'TOGGLE_PREVIEW_VISIBILITY'
+  };
+};
   
-export default setMarkdownText
+export { setMarkdownText, togglePreviewVisibility };
