@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleEditorVisibility } from '../action';
 import { useEffect } from 'react';
 import { marked } from 'marked';
 
@@ -7,6 +8,9 @@ const Preview = () => {
 
   const markdownText = useSelector((state) => state.markdownText);
   const isPreviewVisible = useSelector((state) => state.isPreviewVisible);
+  const [containerMargin, setContainerMargin] = useState('80px auto 0 auto');
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isPreviewVisible) {
@@ -18,7 +22,7 @@ const Preview = () => {
   const [iconOpacity, setIconOpacity] = useState(1);
   
   const containerStyle = {
-    margin: '80px auto 0 auto',
+    margin: containerMargin,
     width: '60%'
   }
 
@@ -55,6 +59,11 @@ const Preview = () => {
     setIconOpacity(1);
   }
 
+  const handleIconClick = () => {
+    dispatch(toggleEditorVisibility());
+    setContainerMargin('20px auto 0 auto');
+  }
+
   if (!isPreviewVisible) {
     return null; // Return null if preview is not visible
   }
@@ -67,7 +76,8 @@ const Preview = () => {
             class="fa fa-arrows-alt" 
             style={iconStyle}
             onMouseEnter={handleIconMouseEnter}
-            onMouseLeave={handleIconMouseLeave}></i>
+            onMouseLeave={handleIconMouseLeave}
+            onClick={handleIconClick}></i>
         </div>
         {isPreviewVisible && (
         <div id="preview" style={previewStyle} dangerouslySetInnerHTML={{ __html: marked(markdownText) }}></div>

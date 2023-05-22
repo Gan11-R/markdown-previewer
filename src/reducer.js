@@ -2,7 +2,8 @@ import defaultMarkdownText from "./default-mardown-text";
 
 const initialState = {
     markdownText: defaultMarkdownText,
-    isPreviewVisible: true
+    isPreviewVisible: true,
+    isEditorVisible: true
 };
   
 const reducer = (state = initialState, action) => {
@@ -11,6 +12,8 @@ const reducer = (state = initialState, action) => {
             return { ...state, markdownText: action.payload };
         case 'TOGGLE_PREVIEW_VISIBILITY':
             return { ...state, isPreviewVisible: !state.isPreviewVisible}
+        case 'TOGGLE_EDITOR_VISIBILITY':
+            return { ...state, isEditorVisible: !state.isEditorVisible}
         default:
             return state;
     }

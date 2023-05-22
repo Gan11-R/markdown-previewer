@@ -10,5 +10,11 @@ const togglePreviewVisibility = () => {
     type: 'TOGGLE_PREVIEW_VISIBILITY'
   };
 };
+
+const toggleEditorVisibility = () => {
+  return {
+    type: 'TOGGLE_EDITOR_VISIBILITY'
+  }
+}
   
-export { setMarkdownText, togglePreviewVisibility };
+export { setMarkdownText, togglePreviewVisibility, toggleEditorVisibility };

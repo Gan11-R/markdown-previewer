@@ -6,6 +6,7 @@ const Editor = () => {
   
   const markdownText = useSelector((state) => state.markdownText);
   const dispatch = useDispatch();
+  const isEditorVisible = useSelector((state) => state.isEditorVisible);
   const [iconOpacity, setIconOpacity] = useState(1);
   const [containerHeight, setcontainerHeight] = useState('200px');
 
@@ -61,6 +62,10 @@ const Editor = () => {
     }
 
     dispatch(togglePreviewVisibility());
+  }
+
+  if (!isEditorVisible) {
+    return null; // Return null if editor is not visible
   }
 
   return (
